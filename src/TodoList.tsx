@@ -2,10 +2,16 @@ import * as React from 'react'
 import TodoItem from './TodoItem'
 import {AddTodoForm} from './AddTodoForm'
 
-export const TodoList = ({todos}: any) => {
+interface TodoListProps {
+    todos: Array<TodoProps>
+    toggleTodo: ToggleTodoProps
+}
+
+const TodoList = ({todos, toggleTodo}: TodoListProps) => {
+    
     const showTodos = () => {
-        return todos.map((todo: any) => {
-            return <TodoItem {...todo} />
+        return todos.map((todo: TodoProps) => {
+            return <TodoItem key={todo.id} todo={todo} toggleTodo={toggleTodo}/>
         })
     }
     return (
@@ -17,3 +23,5 @@ export const TodoList = ({todos}: any) => {
         
     )
 }
+
+export default TodoList
