@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import TodoList from './TodoList'
 import { listOfTodos } from './listOfTodos'
 
-const initialTodos: TodoProps[] = listOfTodos
 
 const App: React.FunctionComponent = () => {
-  const [todos, setTodos] = useState<TodoProps[]>(initialTodos)
+  const [todos, setTodos] = useState<TodoProps[]>(listOfTodos)
 
   const toggleTodo: ToggleTodoProps = (selectedTodo) => {
     const updatedTodosList = todos.map(todo => {
@@ -24,7 +23,7 @@ const App: React.FunctionComponent = () => {
   return (
     <div className="App">
       <h1>Todo App!</h1>
-      <TodoList todos={initialTodos} toggleTodo={toggleTodo}/>
+      <TodoList todos={todos} toggleTodo={toggleTodo}/>
     </div>
   );
 }
